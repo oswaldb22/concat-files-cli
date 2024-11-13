@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { program } from 'commander';
 import { Octokit } from '@octokit/rest';
 import * as fs from 'node:fs/promises';
