@@ -80,7 +80,9 @@ async function downloadFiles(octokit: Octokit, owner: string, repo: string, opti
 // Main function to download and prepend files
 async function downloadAndPrepend(repoUrl: string, outputFile: string, options: { exclude: string[]; include: string[]; }) {
   try {
-    const octokit = new Octokit();
+    const octokit = new Octokit({
+      auth: process.env.GITHUB_TOKEN,
+    });
     const { owner, repo } = parseRepoUrl(repoUrl);
     const outputData = await downloadFiles(octokit, owner, repo, options);
     await writeOutputToFile(outputFile, outputData);
